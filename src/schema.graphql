@@ -53,6 +53,7 @@ type EmailSignInResponse {
 type Mutation {
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   FacebookConnect(firstName: String!, lastName: String!, email: String, fbId: String!): FacebookConnectResponse!
+  StartPhoneVerification(phoneNumber: String!): StartPhoneVerificationResponse!
 }
 
 type FacebookConnectResponse {
@@ -92,13 +93,17 @@ type Query {
   user: User
 }
 
+type StartPhoneVerificationResponse {
+  ok: Boolean!
+  error: String
+}
+
 type Verification {
   id: Int!
   target: String!
-  playload: String!
+  payload: String!
   key: String!
-  used: Boolean!
-  user: User!
+  verified: Boolean!
   createdAt: String!
-  updatedAt: String!
+  updatedAt: String
 }
